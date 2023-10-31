@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import mockUsers from "./mockUsers.js"
 import mockBookClubs from "./mockBookClubs.js"
+import mockClubMemberships from "./mockClubMemberships.js"
 import { Route, Routes } from "react-router-dom"
 import Header from "./components/Header.js"
 import Footer from "./components/Footer.js"
@@ -17,7 +18,7 @@ import UserProfile from "./pages/UserProfile.js"
 const App = () => {
   const [currentUser, setCurrentUser] = useState(mockUsers[0])
   const [bookClub, setBookClubs] = useState(mockBookClubs)
-
+  const [membership, setMembership] = useState(mockClubMemberships)
   return (
     <>
     <Header />
