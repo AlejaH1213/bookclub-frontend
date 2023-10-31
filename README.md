@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+## Welcome to the front end of The Book Club Avengers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React Setup 
+$ yarn create react-app apartment-app-frontend
+$ cd apartment-app-frontend
+$ yarn add react-router-dom
+$ yarn add bootstrap
+$ yarn add reactstrap
+Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
+$ yarn start
+Add the remote from your GitHub classroom repository
+Create a default branch (main)
+Make an initial commit to the repository
+Ask your instructors for branch protection
+To enable routing in our application we need to add the BrowserRouter component to index.js. The BrowserRouter component will get imported from the React Router library. Then BrowserRouter tags will wrap the App.js component invocation
 
-## Available Scripts
+## Mock Users and Mock Book Clubs 
+When creating mock data in React, it is important to include the primary keys as well as the foreign keys that belong to each data instance in the Rails API.
 
-In the project directory, you can run:
+We can create two mock files: one for users and one for apartments.
 
-### `yarn start`
+User passwords can be excluded from the mock data since Devise will ensure they are not available to view.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Both of these files can be imported to App.js and set in state. Only one user will be logged into the application at a time, so we can reference one user from the users array when setting the initial value in state.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## React file structure
+Created all the files and folders for the app as well as a tests file for our test. 
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
