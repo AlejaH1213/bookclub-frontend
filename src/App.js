@@ -14,6 +14,8 @@ import NewAccount from "./pages/NewAccount.js"
 import NewClub from "./pages/NewClub.js"
 import NotFound from "./pages/NotFound.js"
 import UserProfile from "./pages/UserProfile.js"
+import './App.css'
+import YourClubsIndex from "./pages/YourClubsIndex.js"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(mockUsers[0])
@@ -31,6 +33,7 @@ const App = () => {
         <Route path="/newaccount" element={<NewAccount />} />
         <Route path="/newclub" element={<NewClub />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/yourclubs" element={<YourClubsIndex />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     <Footer />
