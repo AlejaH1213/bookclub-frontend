@@ -30,3 +30,9 @@ Created all the files and folders for the app as well as a tests file for our te
 
 Used routes and route from browser router as component calls for all the files in App.js 
 
+## Header and Footer 
+
+Used a tags to make names hyperlinks to our linked in pages and styled the footer in CSS to appear at the bottom of the page and centered. 
+
+Header: used dropdown menu resources from react strap and react router dom to create a dropdown menu and styled each element in CSS, each element has a className to be able to be styled in CSS. Also used protected pages from the syllabus: https://github.com/learn-academy-2023-foxtrot/syllabus/blob/main/apartment-app/frontend/protected.md
+to make sure the dropdown menu is different when a user is logged in. Set state of logged in to false initially, will work on handleLogout in the signin sign out branch. 
