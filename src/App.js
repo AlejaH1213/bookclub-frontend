@@ -14,6 +14,7 @@ import NewAccount from "./pages/NewAccount.js"
 import NewClub from "./pages/NewClub.js"
 import NotFound from "./pages/NotFound.js"
 import UserProfile from "./pages/UserProfile.js"
+import './App.css'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(mockUsers[0])
