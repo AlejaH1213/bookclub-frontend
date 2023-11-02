@@ -19,7 +19,7 @@ import YourClubsIndex from "./pages/YourClubsIndex.js"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
-  const [bookClub, setBookClubs] = useState([])
+  const [bookClubs, setBookClubs] = useState([])
   const [membership, setMembership] = useState(mockClubMemberships)
 
   const readClub = () => {
@@ -49,6 +49,7 @@ const App = () => {
 
   const url = "http://localhost:3000"
   console.log("current user", currentUser);
+
   
   const newaccount = (userInfo) => {
     fetch(`${url}/signup`, {
@@ -72,15 +73,20 @@ const App = () => {
     })
     .catch(error => console.log("login errors: ", error))
   }
-
+  const readBookClubs = () => {
+    fetch(`${url}/clubs`)
+      .then(response => response.json())
+      .then(payload => setBookClubs(payload))
+      .catch(error => console.log(error))
+  }
   return (
     <>
     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/clubs/index" element={<ClubIndex  />} />
-        <Route path="/clubs/:id" element={<ClubShow  />} />
+        <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
+        <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />

@@ -11,15 +11,15 @@ import logo from '../assets/The-Book-Avengers-Logo.png'
 
 
 const Header = (args) => {
-const [isOpen, setIsOpen] = useState(false)
-const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-const toggle = () => setIsOpen(!isOpen)  
+  const toggle = () => setIsOpen(!isOpen)  
 
-const handleLogout = () => {
-  // Add logout logic here
-  setIsLoggedIn(false);
-};
+  const handleLogout = () => {
+    // Add logout logic here
+    setIsLoggedIn(false);
+  };
 
 
   return (
@@ -100,5 +100,5 @@ const handleLogout = () => {
       </Navbar>
     </div>
   )
-}
+  }
 export default Header
