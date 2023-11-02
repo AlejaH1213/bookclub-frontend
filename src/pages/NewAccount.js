@@ -17,8 +17,6 @@ const NewAccount = ({newaccount}) => {
     navigate('/')
     e.target.reset()
   }
-
-const NewAccount = () => {
   return (
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>
