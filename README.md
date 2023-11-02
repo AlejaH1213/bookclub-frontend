@@ -36,3 +36,8 @@ Used a tags to make names hyperlinks to our linked in pages and styled the foote
 
 Header: used dropdown menu resources from react strap and react router dom to create a dropdown menu and styled each element in CSS, each element has a className to be able to be styled in CSS. Also used protected pages from the syllabus: https://github.com/learn-academy-2023-foxtrot/syllabus/blob/main/apartment-app/frontend/protected.md
 to make sure the dropdown menu is different when a user is logged in. Set state of logged in to false initially, will work on handleLogout in the signin sign out branch. 
+
+## Sign up and connecting it to Rails
+
+1. Changed the currentUser state variable to null and the bookclub state variable to an empty array 
+2. created the form for the signup page that in this case is called NewAccount
