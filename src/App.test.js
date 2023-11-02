@@ -9,21 +9,7 @@ describe("<App />", () => {
         <App />
       </BrowserRouter>
     )
-    screen.logTestingPlaygroundURL() 
     const inAppRoute = screen.getByText(/home/i);
     expect(inAppRoute).toBeInTheDocument()
   })
 })
-
-// Header
-// user Profile
-// book index
-// book show 
-// club index 
-// club show 
-// Footer
-// not found 
-// new club 
-// new account 
-// loggin 
-
