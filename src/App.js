@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import mockUsers from "./mockUsers.js"
 import mockBookClubs from "./mockBookClubs.js"
 import mockClubMemberships from "./mockClubMemberships.js"
@@ -21,6 +21,32 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClub, setBookClubs] = useState([])
   const [membership, setMembership] = useState(mockClubMemberships)
+
+  const readClub = () => {
+    fetch(`${url}/mockBookClubs`)
+    .then((response) => response.json())
+    .then((payload) => setBookClubs(payload))
+    .catch((error) => console.log(error))
+  }
+  
+  useEffect (() => {
+    readClub()
+  }, [])
+  
+  const createNewClub = (newClub) => {
+    fetch(`${url}/mockBookClubs`, {
+      body: JSON.stringify(newClub),
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then((response) => response.json())
+    .then(() => readClub())
+    .catch((error) => console.log("New Book Club created error:", error))
+  }
+
+
   const url = "http://localhost:3000"
   console.log("current user", currentUser);
   const newaccount = (userInfo) => {
@@ -45,6 +71,7 @@ const App = () => {
     })
     .catch(error => console.log("login errors: ", error))
   }
+
   return (
     <>
     <Header />
@@ -54,8 +81,8 @@ const App = () => {
         <Route path="/clubs/index" element={<ClubIndex  />} />
         <Route path="/clubs/:id" element={<ClubShow  />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
-        <Route path="/newclub" element={<NewClub />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/yourclubs" element={<YourClubsIndex />} />
         <Route path="*" element={<NotFound />} />
