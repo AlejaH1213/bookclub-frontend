@@ -49,6 +49,7 @@ const App = () => {
 
   const url = "http://localhost:3000"
   console.log("current user", currentUser);
+  
   const newaccount = (userInfo) => {
     fetch(`${url}/signup`, {
       body: JSON.stringify(userInfo),
