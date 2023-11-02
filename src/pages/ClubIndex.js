@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ClubIndex() {
+const ClubIndex = () => {
   return (
     <div>ClubIndex</div>
   )
