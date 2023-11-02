@@ -18,6 +18,7 @@ const NewAccount = ({newaccount}) => {
     e.target.reset()
   }
 
+const NewAccount = () => {
   return (
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NewClub() {
+const NewClub = () => {
   return (
     <div>NewClub</div>
   )
