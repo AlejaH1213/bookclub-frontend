@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
 import logo from '../assets/The-Book-Avengers-Logo.png'
 
 
-function Header(args) {
+const Header = (args) => {
 const [isOpen, setIsOpen] = useState(false)
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -27,13 +27,13 @@ const handleLogout = () => {
     <div className='header'>
       <Navbar {...args}>
         <div>
-        <NavbarBrand  href="/" className='navbar-brand'>
+        <NavLink  to="/" className='navbar-brand'>
         <img 
             className='logo'
             alt="logo"
             src={logo}
           />
-        </NavbarBrand>
+        </NavLink>
         </div>
         <div className='dropDownMenu'>
         <NavbarToggler  onClick={toggle} className='navbar-toggler'/>

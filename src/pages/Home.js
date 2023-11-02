@@ -1,7 +1,8 @@
 import React from 'react'
 import homePic from '../assets/HomePicture.png'
 import arrow from '../assets/arrow.png'
-function Home() {
+
+const Home = () => {
   return ( 
       <div className='home'>
         <h1 >Welcome! Find Your Book Besties Today!</h1>
