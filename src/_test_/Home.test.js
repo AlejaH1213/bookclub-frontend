@@ -9,7 +9,6 @@ describe("<Home />", () => {
         <Home />
       </BrowserRouter>
     )
-    screen.logTestingPlaygroundURL()
     const homeHeading = screen.getByText(/Home/i) 
     expect(homeHeading).toBeInTheDocument()
   })
