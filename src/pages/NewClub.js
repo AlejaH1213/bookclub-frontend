@@ -26,6 +26,7 @@ const NewClub = ({createNewClub}) => {
     navigate("/userprofile")
   }
 
+const NewClub = () => {
   return (
     <>
       <h2>Create a New Club</h2>

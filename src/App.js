@@ -18,12 +18,12 @@ import './App.css'
 import YourClubsIndex from "./pages/YourClubsIndex.js"
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(mockUsers[0])
-  const [bookClub, setBookClubs] = useState(mockBookClubs)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [bookClub, setBookClubs] = useState([])
   const [membership, setMembership] = useState(mockClubMemberships)
 
   const readClub = () => {
-    fetch("http://localhost:3000/mockBookClubs")
+    fetch(`${url}/mockBookClubs`)
     .then((response) => response.json())
     .then((payload) => setBookClubs(payload))
     .catch((error) => console.log(error))
@@ -34,7 +34,7 @@ const App = () => {
   }, [])
   
   const createNewClub = (newClub) => {
-    fetch("http://localhost:3000/mockBookClubs", {
+    fetch(`${url}/mockBookClubs`, {
       body: JSON.stringify(newClub),
       headers:{
         "Content-Type": "application/json"
@@ -47,6 +47,31 @@ const App = () => {
   }
 
 
+  const url = "http://localhost:3000"
+  console.log("current user", currentUser);
+  const newaccount = (userInfo) => {
+    fetch(`${url}/signup`, {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText)
+      }
+      // store the token
+      localStorage.setItem("token", response.headers.get("Authorization"))
+      return response.json()
+    })
+    .then(payload => {
+      setCurrentUser(payload)
+    })
+    .catch(error => console.log("login errors: ", error))
+  }
+
   return (
     <>
     <Header />
@@ -56,8 +81,8 @@ const App = () => {
         <Route path="/clubs/index" element={<ClubIndex  />} />
         <Route path="/clubs/:id" element={<ClubShow  />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/newaccount" element={<NewAccount />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
+        <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/yourclubs" element={<YourClubsIndex />} />
         <Route path="*" element={<NotFound />} />
