@@ -23,29 +23,30 @@ const NewAccount = ({newaccount}) => {
       <div className='title-new-account'>
         <h2>Sign Up</h2>
       </div>
-        <div className='form-images'>
-          <img
+      <div className='form-images'>
+        <img
           src={superhero}
           width={'500px'}
-          /> 
-      <form className='form-container' ref={formRef} onSubmit={handleSubmit}>
-        Username: <input className='form-item' type="username" name="username" placeholder="username" />
-        {/* maybe this profile picture needs to have a different type because it is an url */}
-        Profile Picture: <input className='form-item' type="profile_picture" name="profile_picture" placeholder="profile picture" />
-        Email: <input className='form-item' type="email" name="email" placeholder="email" />
-        Password: <input className='form-item' type="password" name="password" placeholder="password" />
-        Confirm Password: <input className='form-item' type="password" name="password_confirmation" placeholder="confirm password" />
-        <input className='submit' type="submit" value="Submit" />
-        <br></br>
-        <div>Already registered, <a href="/login">Login</a> here.</div>
-      </form>
-      <br/>
-          <img
-            src={villain}
-            width={'325px'}
-            height={'400'}
-            />
-        </div>
+        /> 
+        <form className='form-container' ref={formRef} onSubmit={handleSubmit}>
+          Username: <input className='form-item' type="username" name="username" placeholder="username" />
+          {/* maybe this profile picture needs to have a different type because it is an url */}
+          Profile Picture: <input className='form-item' type="profile_picture" name="profile_picture" placeholder="profile picture" />
+          Email: <input className='form-item' type="email" name="email" placeholder="email" />
+          Password: <input className='form-item' type="password" name="password" placeholder="password" />
+          Confirm Password: <input className='form-item' type="password" name="password_confirmation" placeholder="confirm password" />
+          <br/>
+          <input className='submit' type="submit" value="Submit" />
+          <br/>
+          <div>Already registered, <a href="/login">Login</a> here.</div>
+        </form>
+        <br/>
+        <img
+          src={villain}
+          width={'325px'}
+          height={'400'}
+        />
+      </div>
     </div>
   )
 }
