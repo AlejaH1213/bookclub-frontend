@@ -5,7 +5,7 @@ import { Card, CardBody, CardImg, CardTitle, Button } from "reactstrap";
 const ClubIndex = ({ bookClubs, readBookClubs }) => {
   useEffect(()=>{
     readBookClubs()
-  },[readBookClubs])
+  },[])
   return (
     <>
       <h2>Explore and Join a Book Club!</h2>

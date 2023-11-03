@@ -21,20 +21,19 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClubs, setBookClubs] = useState([])
   const [membership, setMembership] = useState(mockClubMemberships)
-
-  const readClub = () => {
-    fetch(`${url}/mockBookClubs`)
-    .then((response) => response.json())
-    .then((payload) => setBookClubs(payload))
-    .catch((error) => console.log(error))
-  }
   
+  const readBookClubs = () => {
+    fetch(`${url}/clubs`)
+      .then(response => response.json())
+      .then(payload => setBookClubs(payload))
+      .catch(error => console.log(error))
+  }
   useEffect (() => {
-    readClub()
+    readBookClubs()
   }, [])
   
   const createNewClub = (newClub) => {
-    fetch(`${url}/mockBookClubs`, {
+    fetch(`${url}/clubs/new`, {
       body: JSON.stringify(newClub),
       headers:{
         "Content-Type": "application/json"
@@ -42,7 +41,7 @@ const App = () => {
       method: "POST"
     })
     .then((response) => response.json())
-    .then(() => readClub())
+    .then(() => readBookClubs())
     .catch((error) => console.log("New Book Club created error:", error))
   }
 
@@ -72,12 +71,6 @@ const App = () => {
       setCurrentUser(payload)
     })
     .catch(error => console.log("login errors: ", error))
-  }
-  const readBookClubs = () => {
-    fetch(`${url}/clubs`)
-      .then(response => response.json())
-      .then(payload => setBookClubs(payload))
-      .catch(error => console.log(error))
   }
   return (
     <>
