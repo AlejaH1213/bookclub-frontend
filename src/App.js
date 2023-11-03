@@ -72,6 +72,30 @@ const App = () => {
     })
     .catch(error => console.log("login errors: ", error))
   }
+  const login = (userInfo) => {
+    fetch(`${url}/login`, {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText)
+      }
+      // store the token
+      localStorage.setItem("token", response.headers.get("Authorization"))
+      return response.json()
+    })
+    .then(payload => {
+      localStorage.setItem("currentUser", JSON.stringify(payload))
+      setCurrentUser(payload)
+    })
+    .catch(error => console.log("login errors: ", error))
+  }
+
   return (
     <body>
     <Header />
@@ -80,7 +104,7 @@ const App = () => {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login login={login} />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
         <Route path="/profile" element={<UserProfile />} />
