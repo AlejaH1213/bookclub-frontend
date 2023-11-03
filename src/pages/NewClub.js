@@ -15,18 +15,15 @@ const NewClub = ({createNewClub}) => {
   const navigate = useNavigate()
 
   const handleChange = (e) => {
-    // console.log(e.target.name)
-    // console.log(e.target.value)
     setNewClub({...newClub, [e.target.name]: e.target.value})
   }
   console.log("newClub:", newClub)
 
   const handleSubmit = () => {
     createNewClub(newClub)
-    navigate("/userprofile")
+    navigate("/profile")
   }
 
-const NewClub = () => {
   return (
     <>
       <h2>Create a New Club</h2>
