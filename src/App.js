@@ -98,20 +98,20 @@ const App = () => {
 
   return (
     <body>
-    <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
-        <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
-        <Route path="/login" element={<Login login={login} />} />
-        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
-        <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/yourclubs" element={<YourClubsIndex />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    <Footer />
+      <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
+          <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
+          <Route path="/login" element={<Login login={login} />} />
+          <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
+          <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/yourclubs" element={<YourClubsIndex />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      <Footer />
     </body>
   )
 }
