@@ -73,7 +73,7 @@ const App = () => {
     .catch(error => console.log("login errors: ", error))
   }
   return (
-    <>
+    <body>
     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -88,7 +88,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     <Footer />
-    </>
+    </body>
   )
 }
 

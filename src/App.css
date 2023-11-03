@@ -1,4 +1,4 @@
-* {
+body {
   background-color: #aaaeb1;
 }
 
@@ -134,4 +134,25 @@
 .submit{
   background-color: #ff0000;
   color: black;
+}
+
+.cards-container{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.aleja-card{
+  background-color: #ff0000 !important;
+}
+
+.xe-card {
+  background-color: #c3c205 !important;
+}
+
+.dre-card {
+  background-color: #062e57
 }
