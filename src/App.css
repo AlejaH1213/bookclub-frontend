@@ -144,4 +144,14 @@ body {
   justify-content: space-evenly;
 }
 
+.card-container{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
+.title{ 
+  text-align: center;
+}
