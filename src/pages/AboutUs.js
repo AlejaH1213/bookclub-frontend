@@ -20,6 +20,7 @@ const AboutUs = () => {
           Aleja Hale
         </CardTitle>
         <CardSubtitle
+        tag="h6"
           >
           Project, Product Manager
         </CardSubtitle>
