@@ -16,11 +16,12 @@ import NotFound from "./pages/NotFound.js"
 import UserProfile from "./pages/UserProfile.js"
 import './App.css'
 import YourClubsIndex from "./pages/YourClubsIndex.js"
+import EditClub from "./pages/EditClub.js"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClubs, setBookClubs] = useState([])
-  const [membership, setMembership] = useState(mockClubMemberships)
+  const [membership, setMembership] = useState([])
   
   const readBookClubs = () => {
     fetch(`${url}/clubs`)
@@ -29,6 +30,10 @@ const App = () => {
       .catch(error => console.log(error))
   }
   useEffect (() => {
+    const loggedIn = localStorage.getItem("currentUser")
+    if (loggedIn) {
+      setCurrentUser(JSON.parse(loggedIn))
+    }
     readBookClubs()
   }, [])
   
@@ -98,17 +103,24 @@ const App = () => {
 
   return (
     <>
-    <Header />
+    <Header login={login} currentUser={currentUser}  />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/clubedit" element={<EditClub />} />
         <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/yourclubs" element={<YourClubsIndex />} />
+        {currentUser && (
+          <>
+            <Route 
+              path="/yourclubs" 
+              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} membership={membership} />} />
+          </>
+        )}
         <Route path="*" element={<NotFound />} />
       </Routes>
     <Footer />

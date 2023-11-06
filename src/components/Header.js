@@ -8,23 +8,19 @@ import {
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/The-Book-Avengers-Logo.png'
+import { useNavigate } from 'react-router-dom';
 
 
-const Header = (args) => {
+const Header = ( { login, currentUser }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  const navigate = useNavigate()
   const toggle = () => setIsOpen(!isOpen)  
-
-  const handleLogout = () => {
-    // Add logout logic here
-    setIsLoggedIn(false);
-  };
-
-
+  const handleLogIn = () => {
+    navigate("/login")
+  }
   return (
     <div className='header'>
-      <Navbar {...args}>
+      <Navbar>
         <div>
         <NavLink  to="/" className='navbar-brand'>
         <img 
@@ -41,7 +37,7 @@ const Header = (args) => {
             <NavItem className='nav-item'>
               <NavLink to="/" className='custom-link'>Home</NavLink>
             </NavItem>
-            { isLoggedIn && (
+            { currentUser && (
               <>
               <NavItem className="nav-item">
                   <NavLink to="/profile" className="custom-link">
@@ -64,13 +60,13 @@ const Header = (args) => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <button onClick={handleLogout} className="custom-link">
+                  <button  className="custom-link">
                     Logout
                   </button>
                 </NavItem>
                 </>
             )}
-            { !isLoggedIn && (
+            { !currentUser && (
               <>
             <NavItem className='nav-item'>
               <NavLink to="/newaccount" className='custom-link'>
