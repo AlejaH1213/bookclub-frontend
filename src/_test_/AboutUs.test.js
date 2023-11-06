@@ -9,8 +9,6 @@ describe("<AboutUs />", () => {
         <AboutUs />
       </BrowserRouter>
     )
-    
-
     const linksWithin1 = screen.getByRole('heading', {name: /project/i})
     expect(linksWithin1).toBeInTheDocument()
 
@@ -19,8 +17,5 @@ describe("<AboutUs />", () => {
     
     const linksWithin3 = screen.getByRole('heading', {name: /design lead/i})
     expect(linksWithin3).toBeInTheDocument()
-
-    // const inTheCards = screen.getByText(/github/i) 
-    // expect(inTheCards).toBeInTheDocument()
   })
 })
