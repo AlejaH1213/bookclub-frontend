@@ -10,7 +10,7 @@ describe("<NotFound />", () => {
       </BrowserRouter>
     )
 
-    const teamNames = screen.getByText(/NotFound/i)
+    const teamNames = screen.getByText(/Not Found/i)
     expect(teamNames).toBeInTheDocument()
   })
 })

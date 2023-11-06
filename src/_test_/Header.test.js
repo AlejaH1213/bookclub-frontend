@@ -9,8 +9,8 @@ describe("<Header />", () => {
         <Header />
       </BrowserRouter>
     )
-
-    const greetingLink = screen.getByText(/header/i)
+    const greetingLink = screen.getByText(/about/i)
     expect(greetingLink).toBeInTheDocument()
+
   })
 })

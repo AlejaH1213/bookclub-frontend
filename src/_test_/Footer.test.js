@@ -10,7 +10,7 @@ describe("<Footer />", () => {
       </BrowserRouter>
     )
 
-    const teamNames = screen.getByText(/footer/i)
+    const teamNames = screen.getByText(/dre/i)
     expect(teamNames).toBeInTheDocument()
   })
 })
