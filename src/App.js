@@ -110,7 +110,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <body>
     <Header login={login} currentUser={currentUser}  />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -132,7 +132,8 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     <Footer />
-    </>
+    </body>
+
   )
 }
 

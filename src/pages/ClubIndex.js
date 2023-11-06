@@ -10,14 +10,16 @@ const ClubIndex = ({ bookClubs, readBookClubs }) => {
   console.log("from club index", bookClubs);
   return (
     <>
-      <h2>Explore and Join a Book Club!</h2>
+      <h2 className='title'>Explore and Join a Book Club!</h2>
       <div className="center-image">
         <main className="card-container">
           {bookClubs?.map((bookClub, index)=> {
             return (
               <Card
                 style={{
-                  width: '18rem'
+                  width: '18rem',
+                  backgroundColor: '#ff0000',
+                  color: '#5e2121'
                 }}
                 key={index}
                 className="card-item"
@@ -30,7 +32,11 @@ const ClubIndex = ({ bookClubs, readBookClubs }) => {
                   <CardTitle tag="h5">
                     {`${bookClub.summary}`}
                   </CardTitle>
-                  <Button>
+                  <Button 
+                    style={{
+                      backgroundColor: '#062e57'
+                    }}
+                  >
                     <NavLink to={`/clubs/${bookClub.id}`} className="nav-link">
                       See more details!
                     </NavLink>

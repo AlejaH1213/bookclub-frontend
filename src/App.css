@@ -1,5 +1,5 @@
-* {
-  background-color: #aaaeb1;
+body {
+  background-color: #aaaeb1 !important;
 }
 
 /* .footer styles */
@@ -134,4 +134,33 @@
 .submit{
   background-color: #ff0000;
   color: black;
+}
+
+.cards-container{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.card-container{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.title{ 
+  text-align: center;
+}
+
+.club-show-content{ 
+  background-color: #aaaeb1;
+}
+
+.club-show-pic {
+  height: 850 px;
+  width: 950px;
 }

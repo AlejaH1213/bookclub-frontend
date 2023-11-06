@@ -9,7 +9,7 @@ describe("<Home />", () => {
         <Home />
       </BrowserRouter>
     )
-    const homeHeading = screen.getByText(/Home/i) 
+    const homeHeading = screen.getByText(/welcome/i) 
     expect(homeHeading).toBeInTheDocument()
   })
 })
@@ -17,7 +17,7 @@ describe("<Home />", () => {
 
 describe("<Home />", () => {
   it("renders without crashing", () => {
-    const div = document.createElement("div")
-    render(<Home />, div)
+    const div = document.createElement("LEARN")
+    render(<Home />)
   })
 })

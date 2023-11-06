@@ -6,6 +6,7 @@ const Login = ({ login }) => {
   const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const formData = new FormData(formRef.current)
     const data = Object.fromEntries(formData)
     const userInfo = {
@@ -15,6 +16,7 @@ const Login = ({ login }) => {
     navigate('/')
     e.target.reset()
   }
+  
   return (
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>
