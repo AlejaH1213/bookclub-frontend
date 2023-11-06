@@ -12,7 +12,8 @@ const AboutUs = () => {
           <Card
             style={{
               width: '18rem',
-              backgroundColor: '#ff0000'
+              backgroundColor: '#ff0000',
+              color: '#5e2121'
             }}
           >
             <CardBody>
@@ -47,7 +48,8 @@ const AboutUs = () => {
           <Card
             style={{
               width: '18rem',
-              backgroundColor: '#c3c205'
+              backgroundColor: '#c3c205',
+              color: '#636303'
             }}
             className='indiv-card'
           >
@@ -84,7 +86,7 @@ const AboutUs = () => {
             style={{
               width: '18rem',
               backgroundColor: '#062e57',
-              color: 'black'
+              color: '#70b2f5'
             }}
             className='indiv-card'
           >

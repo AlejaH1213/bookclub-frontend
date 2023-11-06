@@ -16,7 +16,8 @@ const ClubIndex = ({ bookClubs, readBookClubs }) => {
               <Card
                 style={{
                   width: '18rem',
-                  backgroundColor: '#ff0000'
+                  backgroundColor: '#ff0000',
+                  color: '#5e2121'
                 }}
                 key={index}
                 className="card-item"
