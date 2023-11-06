@@ -1,53 +1,40 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { CardGroup, Card, CardBody, CardImg, CardTitle, Button } from "reactstrap"
+import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText } from "reactstrap"
 
-const YourClubsIndex = ({currentUser, bookClubs, membership}) => {
-  const yourClubs = bookClubs.filter(bookClub => bookClub.user_id === currentUser.id)
-  console.log("current user", currentUser);
-  console.log("clubs", yourClubs);
-  console.log("membership from index, ", membership);
+const YourClubsIndex = ({currentUser, bookClubs, memberships }) => {
+  const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
+  const userBookClubs = userMemberships.map(membership => bookClubs[membership.club_id - 1])
   return (
     <>
       <h2>Here are your clubs</h2>
-      <div className='center-image'>
-        <main className='card-container'>
-          {yourClubs?.map((bookClub, index) => {
-            return (
-              <Card
+      {userBookClubs.map((bookClub, index) => {
+        return (
+          <Card
                 style={{
-                    width: '18rem'
+                  width: '18rem'
                 }}
                 key={index}
-                className='card-item'
+                className="card-item"
               >
-                <CardImg
+            
+            <CardImg
                   alt={`profile picture for ${bookClub.name}`}
                   src={bookClub.book_of_the_month_picture}
                 />
-                <CardBody>
+              <CardBody>
                   <CardTitle tag="h5">
-                      {`${bookClub.summary}`}
+                    {`${bookClub.summary}`}
                   </CardTitle>
                   <Button>
-                    <NavLink to={`/clubs/${bookClub.id}`} className='nav-link'>
-                      See more
+                    <NavLink to={`/clubs/${bookClub.id}`} className="nav-link">
+                      See more details!
                     </NavLink>
                   </Button>
-                  <Button>
-                    <NavLink to={"/clubedit"} className="nav-link">
-                      Update this club
-                    </NavLink>
-                  </Button>
-                  <Button>
-                    Delete this club
-                  </Button>
-                </CardBody>    
+                </CardBody>
               </Card>
-            )
-          })}
-        </main>
-      </div>
+        )
+      })}
     </>
   )
 }
