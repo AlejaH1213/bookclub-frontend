@@ -11,12 +11,16 @@ import logo from '../assets/The-Book-Avengers-Logo.png'
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = ( { login, currentUser }) => {
+const Header = ( { login, currentUser, logout }) => {
   const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
   const toggle = () => setIsOpen(!isOpen)  
   const handleLogIn = () => {
     navigate("/login")
+  }
+  const handleClick = () => {
+    logout()
+    navigate("/")
   }
   return (
     <div className='header'>
@@ -60,9 +64,11 @@ const Header = ( { login, currentUser }) => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <button  className="custom-link">
-                    Logout
-                  </button>
+                <input 
+                  type="button" 
+                  value="Log out" 
+                  onClick={handleClick}
+                />
                 </NavItem>
                 </>
             )}
