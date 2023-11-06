@@ -38,14 +38,6 @@ const App = () => {
       .then(payload => setBookClubs(payload))
       .catch(error => console.log(error))
   }
-  useEffect (() => {
-    const loggedIn = localStorage.getItem("currentUser")
-    if (loggedIn) {
-      setCurrentUser(JSON.parse(loggedIn))
-    }
-    readBookClubs();
-    readMemberships();
-  }, [])
   
   const createNewClub = (newClub) => {
     fetch(`${url}/clubs/new`, {
@@ -59,9 +51,14 @@ const App = () => {
     .then(() => readBookClubs())
     .catch((error) => console.log("New Book Club created error:", error))
   }
-
-
-
+  useEffect (() => {
+    const loggedIn = localStorage.getItem("currentUser")
+    if (loggedIn) {
+      setCurrentUser(JSON.parse(loggedIn))
+    }
+    readBookClubs();
+    readMemberships();
+  }, [])
   
   const newaccount = (userInfo) => {
     fetch(`${url}/signup`, {
@@ -109,9 +106,25 @@ const App = () => {
     .catch(error => console.log("login errors: ", error))
   }
 
+  const logout = () => {
+    fetch(`${url}/logout`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token") //retrieve the token
+      },
+      method: "DELETE"
+    })
+    .then(payload => {
+      localStorage.removeItem("token")  // remove the token
+      localStorage.removeItem("currentUser")  // remove the currentUser
+      setCurrentUser(null)
+    })
+    .catch(error => console.log("log out errors: ", error))
+  }
+
   return (
     <body>
-    <Header login={login} currentUser={currentUser}  />
+    <Header login={login} currentUser={currentUser} logout={logout}  />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
