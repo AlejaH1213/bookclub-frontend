@@ -6,6 +6,8 @@ const ClubIndex = ({ bookClubs, readBookClubs }) => {
   useEffect(()=>{
     readBookClubs()
   },[])
+
+  console.log("from club index", bookClubs);
   return (
     <>
       <h2 className='title'>Explore and Join a Book Club!</h2>
