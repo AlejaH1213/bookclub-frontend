@@ -4,7 +4,9 @@ import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText } from "react
 
 const YourClubsIndex = ({currentUser, bookClubs, memberships }) => {
   const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
-  const userBookClubs = userMemberships.map(membership => bookClubs[membership.club_id - 1])
+  const userBookClubs = userMemberships.map(membership => {
+    return bookClubs.find(bookClub => bookClub.id === membership.club_id)
+  })
   return (
     <>
       <h2>Here are your clubs</h2>

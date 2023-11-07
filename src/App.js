@@ -22,16 +22,39 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClubs, setBookClubs] = useState([])
   const [memberships, setMemberships] = useState([])
+  const [membershipsLoading, setMembershipsLoading] = useState(true)
+  const [bookClubsLoading, setBookClubsLoading] = useState(true);
   const url = "http://localhost:3000"
-  console.log("current user", currentUser);
   useEffect (() => {
     const loggedIn = localStorage.getItem("currentUser")
     if (loggedIn) {
       setCurrentUser(JSON.parse(loggedIn))
     }
-    readBookClubs();
-    readMemberships();
-  }, [])
+    setMembershipsLoading(true);
+  fetch(`${url}/memberships`)
+    .then(response => response.json())
+    .then(payload => {
+      setMemberships(payload);
+      setMembershipsLoading(false);
+    })
+    .catch(error => {
+      console.log(error);
+      setMembershipsLoading(false);
+    });
+
+  // Fetch book clubs
+  setBookClubsLoading(true);
+  fetch(`${url}/clubs`)
+    .then(response => response.json())
+    .then(payload => {
+      setBookClubs(payload);
+      setBookClubsLoading(false);
+    })
+    .catch(error => {
+      console.log(error);
+      setBookClubsLoading(false);
+    });
+  }, []);
 
   const readMemberships = () => {
     fetch(`${url}/memberships`)
@@ -141,7 +164,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/clubedit/:id" element={<EditClub bookClubs={bookClubs} updateBookClub={updateBookClub} readBookClubs={readBookClubs}/>} />
+        
+        <Route path="/clubedit/:id" element={<EditClub bookClubs={bookClubs} updateBookClub={updateBookClub} readBookClubs={readBookClubs} memberships={memberships} currentUser={currentUser}/>} />
         <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
