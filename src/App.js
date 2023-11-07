@@ -134,7 +134,7 @@ const App = () => {
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile currentUser={currentUser}/>} />
         {currentUser && (
           <>
             <Route 
