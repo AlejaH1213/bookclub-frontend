@@ -24,6 +24,14 @@ const App = () => {
   const [memberships, setMemberships] = useState([])
   const url = "http://localhost:3000"
   console.log("current user", currentUser);
+  useEffect (() => {
+    const loggedIn = localStorage.getItem("currentUser")
+    if (loggedIn) {
+      setCurrentUser(JSON.parse(loggedIn))
+    }
+    readBookClubs();
+    readMemberships();
+  }, [])
 
   const readMemberships = () => {
     fetch(`${url}/memberships`)
@@ -51,14 +59,19 @@ const App = () => {
     .then(() => readBookClubs())
     .catch((error) => console.log("New Book Club created error:", error))
   }
-  useEffect (() => {
-    const loggedIn = localStorage.getItem("currentUser")
-    if (loggedIn) {
-      setCurrentUser(JSON.parse(loggedIn))
-    }
-    readBookClubs();
-    readMemberships();
-  }, [])
+
+  const updateBookClub = (editClub, id) => {
+    fetch(`${url}/clubs/${id}`, {
+      body: JSON.stringify(editClub),
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then((response) => response.json())
+    .then(() => readBookClubs())
+    .catch((error) => console.log("Book club update error:", error))
+  }
   
   const newaccount = (userInfo) => {
     fetch(`${url}/signup`, {
@@ -128,7 +141,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/clubedit" element={<EditClub />} />
+        <Route path="/clubedit/:id" element={<EditClub bookClubs={bookClubs} updateBookClub={updateBookClub} readBookClubs={readBookClubs}/>} />
         <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
