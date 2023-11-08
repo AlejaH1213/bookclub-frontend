@@ -52,23 +52,23 @@ const EditClub = ({bookClubs, updateBookClub, memberships, currentUser}) => {
                 Name
               </Label>
               <Input
-                id="name"
-                name="name"
-                type="text"
-                onChange={handleChange}
-                value={editBookClub.name}
-                />
+              id="name"
+              name="name"
+              type="text"
+              onChange={handleChange}
+              value={editBookClub.name}
+              />
             </FormGroup>
             <FormGroup>
               <Label for="summary">
                 Summary
               </Label>
               <Input
-                id="summary"
-                name="summary"
-                type="text"
-                onChange={handleChange}
-                value={editBookClub.summary}
+              id="summary"
+              name="summary"
+              type="text"
+              onChange={handleChange}
+              value={editBookClub.summary}
               />
             </FormGroup>
             <FormGroup>
@@ -76,48 +76,47 @@ const EditClub = ({bookClubs, updateBookClub, memberships, currentUser}) => {
                 Meeting Dates
               </Label>
               <Input
-                id="meeting_dates"
-                name="meeting_dates"
-                type="text"
-                onChange={handleChange}
-                value={editBookClub.meeting_dates}
-                />
+              id="meeting_dates"
+              name="meeting_dates"
+              type="text"
+              onChange={handleChange}
+              value={editBookClub.meeting_dates}
+              />
             </FormGroup>
             <FormGroup>
               <Label for="book_of_the_month">
                 Book of the Month
               </Label>
               <Input
-                id="book_of_the_month"
-                name="book_of_the_month"
-                type="text"
-                onChange={handleChange}
-                value={editBookClub.book_of_the_month}
-                />
+              id="book_of_the_month"
+              name="book_of_the_month"
+              type="text"
+              onChange={handleChange}
+              value={editBookClub.book_of_the_month}
+              />
             </FormGroup>
             <FormGroup>
               <Label for="book_of_the_month_picture">
-                  URL for book of the month picture
+              URL for book of the month picture
               </Label>
               <Input
-                id="book_of_the_month_picture"
-                name="book_of_the_month_picture"
-                type="text"
-                onChange={handleChange}
-                value={editBookClub.book_of_the_month_picture}
-                />
+              id="book_of_the_month_picture"
+              name="book_of_the_month_picture"
+              type="text"
+              onChange={handleChange}
+              value={editBookClub.book_of_the_month_picture}
+              />
             </FormGroup>
             <NavLink to='/yourclubs'>
-            <Button 
-            name="submit"
-            onClick={handleSubmit} 
-            style={  
-              {backgroundColor: '#ff0000',
-              color: 'black'
-            }}
-            >
-              Submit
-            </Button>
+              <Button 
+              name="submit"
+              onClick={handleSubmit} 
+              style={{
+                backgroundColor: '#ff0000',
+                color: 'black'
+              }}
+              >Submit
+              </Button>
             </NavLink>
           </Form>
           <img
