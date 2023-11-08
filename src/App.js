@@ -96,6 +96,18 @@ const App = () => {
     .catch((error) => console.log("Book club update error:", error))
   }
   
+  const deleteBookClub = (id) => {
+    fetch(`${url}/clubs/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then(() => readBookClubs())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
   const newaccount = (userInfo) => {
     fetch(`${url}/signup`, {
       body: JSON.stringify(userInfo),
@@ -176,7 +188,7 @@ const App = () => {
           <>
             <Route 
               path="/yourclubs" 
-              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} />} />
+              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} deleteBookClub={deleteBookClub} />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
