@@ -25,35 +25,15 @@ const App = () => {
   const [membershipsLoading, setMembershipsLoading] = useState(true)
   const [bookClubsLoading, setBookClubsLoading] = useState(true);
   const url = "http://localhost:3000"
+  
   useEffect (() => {
     const loggedIn = localStorage.getItem("currentUser")
     if (loggedIn) {
       setCurrentUser(JSON.parse(loggedIn))
     }
-    setMembershipsLoading(true);
-  fetch(`${url}/memberships`)
-    .then(response => response.json())
-    .then(payload => {
-      setMemberships(payload);
-      setMembershipsLoading(false);
-    })
-    .catch(error => {
-      console.log(error);
-      setMembershipsLoading(false);
-    });
+    readBookClubs()
+    readMemberships()
 
-  // Fetch book clubs
-  setBookClubsLoading(true);
-  fetch(`${url}/clubs`)
-    .then(response => response.json())
-    .then(payload => {
-      setBookClubs(payload);
-      setBookClubsLoading(false);
-    })
-    .catch(error => {
-      console.log(error);
-      setBookClubsLoading(false);
-    });
   }, []);
 
   const readMemberships = () => {
@@ -98,6 +78,18 @@ const App = () => {
   
   const deleteBookClub = (id) => {
     fetch(`${url}/clubs/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then(() => readBookClubs())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
+  const deleteMembership = (id) => {
+    fetch(`${url}/memberships/${id}`, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -188,7 +180,7 @@ const App = () => {
           <>
             <Route 
               path="/yourclubs" 
-              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} deleteBookClub={deleteBookClub} />} />
+              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} deleteBookClub={deleteBookClub} deleteMembership={deleteMembership}/>} />
           </>
         )}
         <Route path="*" element={<NotFound />} />

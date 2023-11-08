@@ -48,3 +48,31 @@ To include images in the home page I had to use an image tag with inline styling
 https://www.w3schools.com/howto/howto_css_shake_image.asp
 For the text I used simple heading and paragraph tags and breaks so that they would be spaced out. Then, I used an a tag for the JOIN TODAY text to take the user to the new account page. 
 
+
+# removed from useEffect maybe for later use
+
+  
+  // setMembershipsLoading(true);
+  // fetch(`${url}/memberships`)
+  //   .then(response => response.json())
+  //   .then(payload => {
+  //     setMemberships(payload);
+  //     setMembershipsLoading(false);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //     setMembershipsLoading(false);
+  //   });
+
+  // // Fetch book clubs
+  // setBookClubsLoading(true);
+  // fetch(`${url}/clubs`)
+  //   .then(response => response.json())
+  //   .then(payload => {
+  //     setBookClubs(payload);
+  //     setBookClubsLoading(false);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //     setBookClubsLoading(false);
+  //   });

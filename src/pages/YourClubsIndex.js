@@ -1,16 +1,21 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText } from "reactstrap"
 
-const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub }) => {
+const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, deleteMembership }) => {
+  const navigate = useNavigate();
   const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
   const userBookClubs = userMemberships.map(membership => {
     return bookClubs.find(bookClub => bookClub.id === membership.club_id)
   })
-  // const handleDelete = (bookClubId) => {
-  //   deleteBookClub(bookClubId);
-  // };
-  
+
+const handleDelete = (id) => {
+  deleteBookClub(id);
+  window.location.reload()
+}
+
+  console.log("userBookClubs:", userBookClubs);
+  console.log("userMemberships:", userMemberships);
   return (
     <>
     <main>
@@ -41,9 +46,9 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub }) 
                 Edit
               </NavLink>
             </Button>
-            <Button>
-              <NavLink to="/yourclubs" onClick={() => deleteBookClub(bookClub?.id)}>Delete</NavLink>
-            </Button>
+            <NavLink>
+              <Button onClick={() => handleDelete(bookClub?.id)}>Delete</Button>
+            </NavLink>
           </CardBody>
         </Card>
       )))}
