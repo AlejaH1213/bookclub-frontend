@@ -7,8 +7,16 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships }) => {
   const userBookClubs = userMemberships.map(membership => {
     return bookClubs.find(bookClub => bookClub.id === membership.club_id)
   })
+  console.log("current bookclubs", bookClubs);
+  console.log("userBookclubs", userBookClubs);
+  console.log("usermemberships", userMemberships);
   return (
     <>
+          <Button>
+            <NavLink to="/newclub" className="nav-link">
+              Create a New Club
+            </NavLink>
+          </Button>
       <h2>Here are your clubs</h2>
       {userBookClubs.map((bookClub, index) => {
         return (

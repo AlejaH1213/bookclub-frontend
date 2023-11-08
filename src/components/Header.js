@@ -58,6 +58,11 @@ const Header = ( { login, currentUser, logout }) => {
                     See Available Book Clubs
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink to="/newclub" className="custom-link">
+                    Create new club
+                  </NavLink>
+                </NavItem>
                 <NavItem className="nav-item">
                   <NavLink to="/aboutus" className="custom-link">
                     About Us

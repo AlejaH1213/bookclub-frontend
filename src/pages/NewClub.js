@@ -1,18 +1,17 @@
 import React, {useState} from "react"
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
-const NewClub = ({createNewClub}) => {
-  const [newClub, setNewClub] = useState({
-    name: "",
-    image: "",
-    meetingDay: "",
-    thisMonthBookTitle: "",
-    thisMonthBookImage: "",
-    summery: ""
-  })
-
+const NewClub = ({createNewClub , currentUser}) => {
   const navigate = useNavigate()
+  const [newClub, setNewClub] = useState({
+
+    name: "",
+    meeting_dates: "",
+    book_of_the_month: "",
+    book_of_the_month_picture: "",
+    summary: ""
+  })
 
   const handleChange = (e) => {
     setNewClub({...newClub, [e.target.name]: e.target.value})
@@ -20,8 +19,8 @@ const NewClub = ({createNewClub}) => {
   console.log("newClub:", newClub)
 
   const handleSubmit = () => {
-    createNewClub(newClub)
-    navigate("/profile")
+    createNewClub(newClub, currentUser)
+    navigate("/yourclubs")
   }
 
   return (
@@ -42,21 +41,6 @@ const NewClub = ({createNewClub}) => {
             value={newClub.name}
           />
         </FormGroup>
-        
-        <FormGroup>
-          <Label for="image">
-            Image
-          </Label>
-          <Input
-            id="image"
-            name="image"
-            placeholder="Place your image url here"
-            type="url"
-            onChange={handleChange}
-            value={newClub.image}
-          />
-        </FormGroup>
-    
         <FormGroup>
           <Label for="meeting_dates">
             The Meeting Day

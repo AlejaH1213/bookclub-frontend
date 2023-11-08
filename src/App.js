@@ -22,40 +22,16 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClubs, setBookClubs] = useState([])
   const [memberships, setMemberships] = useState([])
-  const [membershipsLoading, setMembershipsLoading] = useState(true)
-  const [bookClubsLoading, setBookClubsLoading] = useState(true);
   const url = "http://localhost:3000"
   useEffect (() => {
     const loggedIn = localStorage.getItem("currentUser")
     if (loggedIn) {
       setCurrentUser(JSON.parse(loggedIn))
     }
-    setMembershipsLoading(true);
-  fetch(`${url}/memberships`)
-    .then(response => response.json())
-    .then(payload => {
-      setMemberships(payload);
-      setMembershipsLoading(false);
-    })
-    .catch(error => {
-      console.log(error);
-      setMembershipsLoading(false);
-    });
-
-  // Fetch book clubs
-  setBookClubsLoading(true);
-  fetch(`${url}/clubs`)
-    .then(response => response.json())
-    .then(payload => {
-      setBookClubs(payload);
-      setBookClubsLoading(false);
-    })
-    .catch(error => {
-      console.log(error);
-      setBookClubsLoading(false);
-    });
   }, []);
-
+console.log("statevariable for membership", memberships);
+console.log("statevariable for clubs", bookClubs);
+console.log("statevaraible user", currentUser);
   const readMemberships = () => {
     fetch(`${url}/memberships`)
       .then(response => response.json())
@@ -71,7 +47,7 @@ const App = () => {
   }
   
   const createNewClub = (newClub) => {
-    fetch(`${url}/clubs/new`, {
+    fetch(`${url}/clubs`, {
       body: JSON.stringify(newClub),
       headers:{
         "Content-Type": "application/json"
@@ -80,8 +56,27 @@ const App = () => {
     })
     .then((response) => response.json())
     .then(() => readBookClubs())
+    
+    .catch((error) => console.log("membership creation error", error))
     .catch((error) => console.log("New Book Club created error:", error))
   }
+
+  const createMembership = (newMembership) => {
+    fetch(`${url}/memberships`, {
+      body: JSON.stringify(newMembership),
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then((response) => response.json())
+    .then(() => readMemberships())
+    
+    .catch((error) => console.log("membership creation error", error))
+    .catch((error) => console.log("New Book Club created error:", error))
+  }
+
+
 
   const updateBookClub = (editClub, id) => {
     fetch(`${url}/clubs/${id}`, {
@@ -169,7 +164,7 @@ const App = () => {
         <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
-        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
+        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} />} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
         <Route path="/profile" element={<UserProfile currentUser={currentUser}/>} />
         {currentUser && (
