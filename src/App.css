@@ -164,6 +164,24 @@ body {
   height: 850 px;
   width: 950px;
 }
-.user-pic{ 
+.user{ 
   background-color: #aaaeb1;
+}
+.edit-container{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#user-pic{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
