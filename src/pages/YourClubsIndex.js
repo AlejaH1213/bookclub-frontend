@@ -19,42 +19,63 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
   return (
     <>
       <main>
-        <h2>Here are your clubs</h2>
+        <h2 className='title'>Here are your clubs</h2>
         {userBookClubs && (userBookClubs?.map((bookClub, index) => (
-          <Card
-            style={{
-              width: '18rem'
-            }}
-            key={index}
-            className="card-item"
-          >
+          <div className='cards-container'>
+            <Card
+              style={{
+                width: '18rem',
+                backgroundColor: '#ff0000',
+                color: '#5e2121'
+              }}
+              key={index}
+              className="card-item"
+            >
             <CardImg
               alt={`profile picture for ${bookClub?.name}`}
               src={bookClub?.book_of_the_month_picture}
             />
-            <CardBody>
-              <CardTitle tag="h5">
-                {`${bookClub?.summary}`}
-              </CardTitle>
-              <Button>
+            <div className='card-item'>
+              <CardBody>
+                <CardTitle tag="h5">
+                  {`${bookClub?.summary}`}
+                </CardTitle>
+                <Button
+                  style={{
+                    backgroundColor: '#062e57'
+                  }}
+                >
                 <NavLink to={`/clubs/${bookClub?.id}`} className="nav-link">
                   See more details!
                 </NavLink>
-              </Button>
-              <Button>
+                </Button>
+                <Button
+                  style={{
+                    backgroundColor: '#062e57'
+                  }}
+                >
                 <NavLink to={`/clubedit/${bookClub?.id}`} className="nav-link">
                   Edit
                 </NavLink>
-              </Button>
-              <NavLink>
-                <Button onClick={() => handleDelete(bookClub?.id)}>Delete</Button>
-              </NavLink>
-            </CardBody>
-          </Card>
+                </Button>
+                <NavLink>
+                  <Button 
+                    style={{
+                    backgroundColor: '#062e57'
+                    }}
+                    onClick={() => handleDelete(bookClub?.id)}
+                  >
+                    Delete
+                  </Button>
+                </NavLink>
+              </CardBody>
+            </div>
+            </Card>
+          </div>
         )))}
       </main>
     </>
-  );
+  )
 }
 
 export default YourClubsIndex
