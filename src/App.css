@@ -167,3 +167,10 @@ body {
 .user-pic{ 
   background-color: #aaaeb1;
 }
+
+.edit-container{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+}
