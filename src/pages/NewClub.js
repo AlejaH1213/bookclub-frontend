@@ -9,7 +9,7 @@ const NewClub = ({createNewClub}) => {
     meetingDay: "",
     thisMonthBookTitle: "",
     thisMonthBookImage: "",
-    summery: ""
+    summary: ""
   })
 
   const navigate = useNavigate()
@@ -30,9 +30,7 @@ const NewClub = ({createNewClub}) => {
       <Form>
         
         <FormGroup>
-          <Label for="name">
-            Name
-          </Label>
+          <Label for="name">Name</Label>
           <Input
             id="name"
             name="name"
@@ -44,9 +42,7 @@ const NewClub = ({createNewClub}) => {
         </FormGroup>
         
         <FormGroup>
-          <Label for="image">
-            Image
-          </Label>
+          <Label for="image">Image URL</Label>
           <Input
             id="image"
             name="image"
