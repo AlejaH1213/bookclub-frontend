@@ -1,18 +1,41 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Login from "../pages/Login"
+import Login from "../pages/Login";
 
-describe("<ClubShow />", () => {
-  it("renders a club", () => {
+describe("<Login />", () => {
+  it("renders a login button", () => {
     render(
       <BrowserRouter>
-        <Login /> 
+        <Login />
       </BrowserRouter>
-    )
-   
-    screen.logTestingPlaygroundURL()
+    );
 
-    const userLogin = screen.getByRole('button', {name: /login/i})
-    expect(userLogin).toBeInTheDocument()
-  })
-})
+    const loginButton = screen.getByRole('button', { name: /Login/i });
+    expect(loginButton).toBeInTheDocument();
+  });
+
+  it("handles form submission", () => {
+    const loginMock = jest.fn(); 
+    render(
+      <BrowserRouter>
+        <Login login={loginMock} />
+      </BrowserRouter>
+    );
+
+ 
+    const emailInput = screen.getByPlaceholderText('email');
+    const passwordInput = screen.getByPlaceholderText('password');
+    const submitButton = screen.getByText('Login');
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    fireEvent.click(submitButton);
+    
+
+    expect(loginMock).toHaveBeenCalledWith({
+      user: {
+        email: 'test@example.com',
+        password: 'password123',
+      },
+    });
+  });
+});
