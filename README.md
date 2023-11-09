@@ -51,6 +51,14 @@ For the text I used simple heading and paragraph tags and breaks so that they wo
 
 ## New Membership
 
-- needed: club id and user id
+- needed: club id and user id 
+- signied in user 
+- Signed in User can see the created club and sees the button to join the club
+    {
+        club_id: 1,
+        user_id: 1,
+        name: "fantasy club"
+    }
+
 
 

@@ -17,6 +17,7 @@ import UserProfile from "./pages/UserProfile.js"
 import './App.css'
 import YourClubsIndex from "./pages/YourClubsIndex.js"
 import EditClub from "./pages/EditClub.js"
+import NewMembership from "./pages/NewMembership.js"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -161,7 +162,8 @@ console.log("statevaraible user", currentUser);
         <Route path="/aboutus" element={<AboutUs />} />
         
         <Route path="/clubedit/:id" element={<EditClub bookClubs={bookClubs} updateBookClub={updateBookClub} readBookClubs={readBookClubs} memberships={memberships} currentUser={currentUser}/>} />
-        <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
+        <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} currentUser={currentUser} />} />
+        <Route path="/clubs/:id/new" element={<NewMembership currentUser={currentUser} createMembership={createMembership} bookClubs={bookClubs}/>}/> 
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} />} />

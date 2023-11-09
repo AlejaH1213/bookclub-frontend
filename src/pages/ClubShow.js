@@ -5,6 +5,7 @@ import { Button, Card} from "reactstrap"
 const ClubShow = ({ bookClubs }) => {
   const { id } = useParams()
   let currentClub = bookClubs.find((club) => club.id === +id)
+  
   return (
     <>
       <main>
