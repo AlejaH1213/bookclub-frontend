@@ -2,22 +2,21 @@ import React, {useState} from "react"
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useNavigate, useParams } from "react-router-dom"
 
+
 const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
   const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
   const userBookClubs = userMemberships.map(membership => {
     return bookClubs.find(bookClub => bookClub.id === membership.club_id)
-  })
-
-  const navigate = useNavigate()
+  }
   const [newClub, setNewClub] = useState({
-
     name: "",
-    meeting_dates: "",
-    book_of_the_month: "",
-    book_of_the_month_picture: "",
+    image: "",
+    meetingDay: "",
+    thisMonthBookTitle: "",
+    thisMonthBookImage: "",
     summary: ""
   })
-
+  const navigate = useNavigate()
   const handleChange = (e) => {
     setNewClub({...newClub, [e.target.name]: e.target.value})
   }
@@ -34,9 +33,7 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
       <Form>
         
         <FormGroup>
-          <Label for="name">
-            Name
-          </Label>
+          <Label for="name">Name</Label>
           <Input
             id="name"
             name="name"
@@ -44,6 +41,17 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             type="text"
             onChange={handleChange}
             value={newClub.name}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="image">Image URL</Label>
+          <Input
+            id="image"
+            name="image"
+            placeholder="Place your image url here"
+            type="url"
+            onChange={handleChange}
+            value={newClub.image}
           />
         </FormGroup>
         <FormGroup>

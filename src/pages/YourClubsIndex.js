@@ -13,6 +13,7 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
     deleteBookClub(id);
     window.location.reload()
   }
+
   console.log("in YouClubIndex.js current bookclubs", bookClubs);
   console.log("in YouClubIndex.js userBookclubs", userBookClubs);
   console.log("in YouClubIndex.js usermemberships", userMemberships);

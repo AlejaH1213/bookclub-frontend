@@ -58,9 +58,9 @@ const Header = ( { login, currentUser, logout }) => {
                     See Available Book Clubs
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink to="/newclub" className="custom-link">
-                    Create new club
+                <NavItem className='nav-item'>
+                  <NavLink to="/newclub" className='custom-link'>
+                    Create a New Club
                   </NavLink>
                 </NavItem>
                 <NavItem className="nav-item">

@@ -12,7 +12,7 @@ const NewAccount = ({newaccount}) => {
     const formData = new FormData(formRef.current)
     const data = Object.fromEntries(formData)
     const userInfo = {
-      "user":{ email: data.email, password: data.password, username: data.username, profile_picure: data.profile_picture}
+      "user":{ email: data.email, password: data.password, username: data.username, profile_picture: data.profile_picture}
     }
     newaccount(userInfo)
     navigate('/')

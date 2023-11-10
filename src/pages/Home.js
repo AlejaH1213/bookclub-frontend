@@ -9,8 +9,8 @@ const Home = () => {
         <img 
         src={homePic}
         style={{
-          height: '900px',
-          width: '1500px',
+          height: '100%',
+          width: '100%',
           textAlign: 'center'
         }}
         />

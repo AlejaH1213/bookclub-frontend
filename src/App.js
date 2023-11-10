@@ -24,12 +24,16 @@ const App = () => {
   const [bookClubs, setBookClubs] = useState([])
   const [memberships, setMemberships] = useState([])
   const url = "http://localhost:3000"
+  
   useEffect (() => {
     const loggedIn = localStorage.getItem("currentUser")
     if (loggedIn) {
       setCurrentUser(JSON.parse(loggedIn))
     }
+    readBookClubs()
+    readMemberships()
   }, []);
+  
 console.log("statevariable for membership", memberships);
 console.log("statevariable for clubs", bookClubs);
 console.log("statevaraible user", currentUser);
@@ -187,9 +191,9 @@ console.log("statevaraible user", currentUser);
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} memberships={memberships} bookClubs={bookClubs} />} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
-        <Route path="/profile" element={<UserProfile currentUser={currentUser}/>} />
         {currentUser && (
           <>
+          <Route path="/profile" element={<UserProfile currentUser={currentUser} bookClubs={bookClubs} memberships={memberships}/>} />
             <Route 
               path="/yourclubs" 
               element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} deleteBookClub={deleteBookClub} deleteMembership={deleteMembership}/>} />
