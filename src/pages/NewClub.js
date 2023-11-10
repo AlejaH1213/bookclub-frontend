@@ -2,7 +2,12 @@ import React, {useState} from "react"
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useNavigate, useParams } from "react-router-dom"
 
-const NewClub = ({createNewClub , currentUser}) => {
+const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
+  const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
+  const userBookClubs = userMemberships.map(membership => {
+    return bookClubs.find(bookClub => bookClub.id === membership.club_id)
+  })
+
   const navigate = useNavigate()
   const [newClub, setNewClub] = useState({
 

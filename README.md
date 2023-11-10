@@ -61,4 +61,7 @@ For the text I used simple heading and paragraph tags and breaks so that they wo
     }
 
 
+- New Club: what user created it?
+- 
+
 

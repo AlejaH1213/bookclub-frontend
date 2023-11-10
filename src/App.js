@@ -57,8 +57,6 @@ console.log("statevaraible user", currentUser);
     })
     .then((response) => response.json())
     .then(() => readBookClubs())
-    
-    .catch((error) => console.log("membership creation error", error))
     .catch((error) => console.log("New Book Club created error:", error))
   }
 
@@ -72,9 +70,7 @@ console.log("statevaraible user", currentUser);
     })
     .then((response) => response.json())
     .then(() => readMemberships())
-    
     .catch((error) => console.log("membership creation error", error))
-    .catch((error) => console.log("New Book Club created error:", error))
   }
 
 
@@ -91,7 +87,30 @@ console.log("statevaraible user", currentUser);
     .then(() => readBookClubs())
     .catch((error) => console.log("Book club update error:", error))
   }
-  
+  const deleteBookClub = (id) => {
+    fetch(`${url}/clubs/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then(() => readBookClubs())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
+  const deleteMembership = (id) => {
+    fetch(`${url}/memberships/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then(() => readBookClubs())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
   const newaccount = (userInfo) => {
     fetch(`${url}/signup`, {
       body: JSON.stringify(userInfo),
@@ -157,7 +176,7 @@ console.log("statevaraible user", currentUser);
   return (
     <body>
     <Header login={login} currentUser={currentUser} logout={logout}  />
-      <Routes>
+    <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         
@@ -166,14 +185,14 @@ console.log("statevaraible user", currentUser);
         <Route path="/clubs/:id/new" element={<NewMembership currentUser={currentUser} createMembership={createMembership} bookClubs={bookClubs}/>}/> 
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
-        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} />} />
+        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} memberships={memberships} bookClubs={bookClubs} />} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
         <Route path="/profile" element={<UserProfile currentUser={currentUser}/>} />
         {currentUser && (
           <>
             <Route 
               path="/yourclubs" 
-              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} />} />
+              element={<YourClubsIndex currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} readMemberships={readMemberships} readBookClubs={readBookClubs} deleteBookClub={deleteBookClub} deleteMembership={deleteMembership}/>} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
