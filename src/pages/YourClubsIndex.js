@@ -14,11 +14,19 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
     window.location.reload()
   }
 
-  console.log("userBookClubs:", userBookClubs);
-  console.log("userMemberships:", userMemberships);
+  console.log("in YouClubIndex.js current bookclubs", bookClubs);
+  console.log("in YouClubIndex.js userBookclubs", userBookClubs);
+  console.log("in YouClubIndex.js usermemberships", userMemberships);
+  console.log("in YouClubIndex.js currentUser: ", currentUser);
+  console.log("in YouClubIndex.js memberships: ", memberships);
   return (
     <>
       <main>
+        <Button>
+          <NavLink to="/newclub" className="nav-link">
+            Create a New Club
+          </NavLink>
+        </Button>
         <h2 className='title'>Here are your clubs</h2>
         {userBookClubs && (userBookClubs?.map((bookClub, index) => (
           <div className='cards-container'>

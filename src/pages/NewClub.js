@@ -1,8 +1,13 @@
 import React, {useState} from "react"
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
-const NewClub = ({createNewClub}) => {
+
+const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
+  const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
+  const userBookClubs = userMemberships.map(membership => {
+    return bookClubs.find(bookClub => bookClub.id === membership.club_id)
+  }
   const [newClub, setNewClub] = useState({
     name: "",
     image: "",
@@ -11,17 +16,15 @@ const NewClub = ({createNewClub}) => {
     thisMonthBookImage: "",
     summary: ""
   })
-
   const navigate = useNavigate()
-
   const handleChange = (e) => {
     setNewClub({...newClub, [e.target.name]: e.target.value})
   }
   console.log("newClub:", newClub)
 
   const handleSubmit = () => {
-    createNewClub(newClub)
-    navigate("/profile")
+    createNewClub(newClub, currentUser)
+    navigate("/yourclubs")
   }
 
   return (
@@ -40,7 +43,6 @@ const NewClub = ({createNewClub}) => {
             value={newClub.name}
           />
         </FormGroup>
-        
         <FormGroup>
           <Label for="image">Image URL</Label>
           <Input
@@ -52,7 +54,6 @@ const NewClub = ({createNewClub}) => {
             value={newClub.image}
           />
         </FormGroup>
-    
         <FormGroup>
           <Label for="meeting_dates">
             The Meeting Day

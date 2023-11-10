@@ -17,13 +17,12 @@ import UserProfile from "./pages/UserProfile.js"
 import './App.css'
 import YourClubsIndex from "./pages/YourClubsIndex.js"
 import EditClub from "./pages/EditClub.js"
+import NewMembership from "./pages/NewMembership.js"
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClubs, setBookClubs] = useState([])
   const [memberships, setMemberships] = useState([])
-  const [membershipsLoading, setMembershipsLoading] = useState(true)
-  const [bookClubsLoading, setBookClubsLoading] = useState(true);
   const url = "http://localhost:3000"
   
   useEffect (() => {
@@ -33,9 +32,11 @@ const App = () => {
     }
     readBookClubs()
     readMemberships()
-
   }, []);
-
+  
+console.log("statevariable for membership", memberships);
+console.log("statevariable for clubs", bookClubs);
+console.log("statevaraible user", currentUser);
   const readMemberships = () => {
     fetch(`${url}/memberships`)
       .then(response => response.json())
@@ -51,7 +52,7 @@ const App = () => {
   }
   
   const createNewClub = (newClub) => {
-    fetch(`${url}/clubs/new`, {
+    fetch(`${url}/clubs`, {
       body: JSON.stringify(newClub),
       headers:{
         "Content-Type": "application/json"
@@ -62,6 +63,21 @@ const App = () => {
     .then(() => readBookClubs())
     .catch((error) => console.log("New Book Club created error:", error))
   }
+
+  const createMembership = (newMembership) => {
+    fetch(`${url}/memberships`, {
+      body: JSON.stringify(newMembership),
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then((response) => response.json())
+    .then(() => readMemberships())
+    .catch((error) => console.log("membership creation error", error))
+  }
+
+
 
   const updateBookClub = (editClub, id) => {
     fetch(`${url}/clubs/${id}`, {
@@ -75,7 +91,6 @@ const App = () => {
     .then(() => readBookClubs())
     .catch((error) => console.log("Book club update error:", error))
   }
-  
   const deleteBookClub = (id) => {
     fetch(`${url}/clubs/${id}`, {
       headers: {
@@ -165,15 +180,16 @@ const App = () => {
   return (
     <body>
     <Header login={login} currentUser={currentUser} logout={logout}  />
-      <Routes>
+    <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         
         <Route path="/clubedit/:id" element={<EditClub bookClubs={bookClubs} updateBookClub={updateBookClub} readBookClubs={readBookClubs} memberships={memberships} currentUser={currentUser}/>} />
-        <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} />} />
+        <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} currentUser={currentUser} />} />
+        <Route path="/clubs/:id/new" element={<NewMembership currentUser={currentUser} createMembership={createMembership} bookClubs={bookClubs}/>}/> 
         <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
         <Route path="/login" element={<Login login={login} />} />
-        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}/>} />
+        <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} memberships={memberships} bookClubs={bookClubs} />} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />
         {currentUser && (
           <>

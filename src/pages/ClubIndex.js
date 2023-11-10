@@ -2,7 +2,7 @@ import React, { useEffect} from 'react'
 import { NavLink} from "react-router-dom"
 import { Card, CardBody, CardImg, CardTitle, Button } from "reactstrap";
 
-const ClubIndex = ({ bookClubs, readBookClubs }) => {
+const ClubIndex = ({ bookClubs, readBookClubs, currentUser }) => {
   useEffect(()=>{
     readBookClubs()
   },[])
@@ -41,6 +41,17 @@ const ClubIndex = ({ bookClubs, readBookClubs }) => {
                       See more details!
                     </NavLink>
                   </Button>
+                  {currentUser && 
+                    <Button 
+                      style={{
+                        backgroundColor: '#062e57'
+                      }}
+                    >
+                      <NavLink to={`/clubs/${bookClub.id}/new`} className="nav-link">
+                        Join!
+                      </NavLink>
+                    </Button>
+                  }
                 </CardBody>
               </Card>
             )
