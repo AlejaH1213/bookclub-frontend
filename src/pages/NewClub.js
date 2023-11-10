@@ -7,7 +7,7 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
   const userMemberships = memberships.filter(membership => membership.user_id === currentUser.id)
   const userBookClubs = userMemberships.map(membership => {
     return bookClubs.find(bookClub => bookClub.id === membership.club_id)
-  }
+  })
   const [newClub, setNewClub] = useState({
     name: "",
     image: "",
