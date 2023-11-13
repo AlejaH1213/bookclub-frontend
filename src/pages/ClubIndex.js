@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react'
 import { NavLink} from "react-router-dom"
-import { Card, CardBody, CardImg, CardTitle, Button } from "reactstrap";
+import { Card, CardBody, CardImg, CardTitle, Button, CardHeader } from "reactstrap";
 
 const ClubIndex = ({ bookClubs, readBookClubs, currentUser }) => {
   useEffect(()=>{
@@ -24,6 +24,9 @@ const ClubIndex = ({ bookClubs, readBookClubs, currentUser }) => {
                 key={index}
                 className="card-item"
               >
+                <CardHeader>
+                  {`${bookClub.name}`}
+                </CardHeader>
                 <CardImg
                   alt={`profile picture for ${bookClub.name}`}
                   src={bookClub.book_of_the_month_picture}

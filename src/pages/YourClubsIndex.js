@@ -39,6 +39,9 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
               key={index}
               className="card-item"
             >
+            <CardHeader>
+              {`${bookClub.name}`}
+            </CardHeader>
             <CardImg
               alt={`profile picture for ${bookClub?.name}`}
               src={bookClub?.book_of_the_month_picture}
