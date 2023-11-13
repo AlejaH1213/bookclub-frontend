@@ -1,96 +1,43 @@
 ## Welcome to the front end of The Book Club Avengers
 
-## React Setup 
-$ yarn create react-app apartment-app-frontend
-$ cd apartment-app-frontend
-$ yarn add react-router-dom
-$ yarn add bootstrap
-$ yarn add reactstrap
-Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
-$ yarn start
-Add the remote from your GitHub classroom repository
-Create a default branch (main)
-Make an initial commit to the repository
-Ask your instructors for branch protection
-To enable routing in our application we need to add the BrowserRouter component to index.js. The BrowserRouter component will get imported from the React Router library. Then BrowserRouter tags will wrap the App.js component invocation
+## Overview
 
-## Mock Users Mock Membership and Mock Book Clubs 
-When creating mock data in React, it is important to include the primary keys as well as the foreign keys that belong to each data instance in the Rails API.
+Reading books does not have to be a lonely affair! With book avengers, you can create and join book clubs in order to connect with people with similar book interests. 
 
-We can create two mock files: one for users and one for apartments.
+## Features 
 
-User passwords can be excluded from the mock data since Devise will ensure they are not available to view.
+Users can sign up, see their profile, create new book clubs, see the book clubs that are available, join a book club, see which clubs they belong to, edit their book clubs, and leave a club. 
 
-Both of these files can be imported to App.js and set in state. Only one user will be logged into the application at a time, so we can reference one user from the users array when setting the initial value in state.
+## How to run the project on your own machine
 
-Mock membership: Will have an id and two foreign keys, one for the user and one for the book club. 
+You will need to 
+1. clone our frontend repo: https://github.com/The-Book-Club-Avengers/bookclub-frontend.git
+2. clone our backend repo: https://github.com/The-Book-Club-Avengers/bookclub-backend.git
+3. install the frontend dependencies: 
+    $ yarn add react-router-dom
+    $ yarn add bootstrap
+    $ yarn add reactstrap
+    Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
+4. install the backend dependencies and create a database: 
+    $ bundle add devise 
+    $ rails db:drop
+    $ rails db:setup 
+5. Start the rails server first on localhost:3000 and then $yarn start to start the react server on localhost:3001
 
-## React file structure
-Created all the files and folders for the app as well as a tests file for our test. 
+## Dependencies
 
-Used routes and route from browser router as component calls for all the files in App.js 
+The dependencies we used for this project were the following: 
 
-## Header and Footer 
+    Backend:
+        JWT and Devise 
+    Frontend:
+        react router dom, reactstrap and bootstrap 
 
-Used a tags to make names hyperlinks to our linked in pages and styled the footer in CSS to appear at the bottom of the page and centered. 
+## Link to live site
 
-Header: used dropdown menu resources from react strap and react router dom to create a dropdown menu and styled each element in CSS, each element has a className to be able to be styled in CSS. Also used protected pages from the syllabus: https://github.com/learn-academy-2023-foxtrot/syllabus/blob/main/apartment-app/frontend/protected.md
-to make sure the dropdown menu is different when a user is logged in. Set state of logged in to false initially, will work on handleLogout in the signin sign out branch. 
+https://bookclub-frontend.onrender.com/
 
-
-## Sign up and connecting it to Rails
-
-1. Changed the currentUser state variable to null and the bookclub state variable to an empty array 
-2. created the form for the signup page that in this case is called NewAccount
-
-# Home
-To include images in the home page I had to use an image tag with inline styling, then for the arrow animation I used w3 schools: 
-https://www.w3schools.com/howto/howto_css_shake_image.asp
-For the text I used simple heading and paragraph tags and breaks so that they would be spaced out. Then, I used an a tag for the JOIN TODAY text to take the user to the new account page. 
-
-
-
-## New Membership
-
-- needed: club id and user id 
-- signied in user 
-- Signed in User can see the created club and sees the button to join the club
-    {
-        club_id: 1,
-        user_id: 1,
-        name: "fantasy club"
-    }
-
-
-- New Club: what user created it?
-- 
-
-
-
-# removed from useEffect maybe for later use
-
-  
-  // setMembershipsLoading(true);
-  // fetch(`${url}/memberships`)
-  //   .then(response => response.json())
-  //   .then(payload => {
-  //     setMemberships(payload);
-  //     setMembershipsLoading(false);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //     setMembershipsLoading(false);
-  //   });
-
-  // // Fetch book clubs
-  // setBookClubsLoading(true);
-  // fetch(`${url}/clubs`)
-  //   .then(response => response.json())
-  //   .then(payload => {
-  //     setBookClubs(payload);
-  //     setBookClubsLoading(false);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //     setBookClubsLoading(false);
-  //   });
+## Creators 
+    Alejandra Hale
+    Dre Lopez Delgado 
+    Xena Sitnikova
