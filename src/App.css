@@ -1,14 +1,17 @@
 body {
   background-color: #aaaeb1 !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
 
 /* .footer styles */
 
 .footer {
   text-align: center;
-  position: fixed;
   width: 100%;
-  bottom: 0;
+  padding: 50px;
 }
 
 /* .dropDownMenu styles */
