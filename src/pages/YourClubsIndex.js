@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText } from "reactstrap"
+import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText, CardHeader } from "reactstrap"
 
 const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, deleteMembership }) => {
   const navigate = useNavigate();
