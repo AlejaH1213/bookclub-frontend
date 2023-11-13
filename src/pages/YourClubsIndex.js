@@ -22,11 +22,6 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
   return (
     <>
       <main>
-        <Button id='submit' style={{alignItems: 'center'}}>
-          <NavLink to="/newclub" className="nav-link">
-            Create a New Club
-          </NavLink>
-        </Button>
         <h2 className='title'>Here are your clubs</h2>
         <div className='cards-container'>
           {userBookClubs && (userBookClubs?.map((bookClub, index) => (
@@ -72,13 +67,18 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
                 <NavLink>
                   <Button 
                     style={{
-                    backgroundColor: '#062e57'
+                      backgroundColor: '#062e57'
                     }}
                     onClick={() => handleDelete(bookClub?.id)}
                   >
                     Delete
                   </Button>
                 </NavLink>
+                <Button  style={{alignItems: 'center'}}>
+                  <NavLink to="/newclub" className="nav-link">
+                    Create a New Club
+                  </NavLink>
+                </Button>
               </CardBody>
             </div>
             </Card>
