@@ -192,3 +192,10 @@ body {
   background-color: #ff0000;
   color: black;
 }
+
+.profile-container{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+}
