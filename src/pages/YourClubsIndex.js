@@ -28,13 +28,13 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
           </NavLink>
         </Button>
         <h2 className='title'>Here are your clubs</h2>
-        {userBookClubs && (userBookClubs?.map((bookClub, index) => (
-          <div className='cards-container'>
+        <div className='cards-container'>
+          {userBookClubs && (userBookClubs?.map((bookClub, index) => (
             <Card
               style={{
                 width: '18rem',
                 backgroundColor: '#ff0000',
-                color: '#5e2121'
+                color: '#5e2121',
               }}
               key={index}
               className="card-item"
@@ -79,8 +79,8 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
               </CardBody>
             </div>
             </Card>
-          </div>
-        )))}
+          )))}
+        </div>
       </main>
     </>
   )
