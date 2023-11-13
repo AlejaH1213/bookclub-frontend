@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useNavigate, useParams } from "react-router-dom"
+import superhero from '../assets/superhero.png'
+import villain  from '../assets/villains.png'
 
 
 const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
@@ -29,11 +31,20 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
 
   return (
     <>
-      <h2>Create a New Club</h2>
-      <Form>
-        
+      <h2 className="title">Create a New Club</h2>
+      <div className="edit-container">
+
+      <div className='form-images'>
+        <img
+          src={superhero}
+          width={'325px'}
+          height={'325px'}
+          /> 
+      <Form className='form-container'>
+
         <FormGroup>
           <Label for="name">Name</Label>
+            
           <Input
             id="name"
             name="name"
@@ -41,8 +52,9 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             type="text"
             onChange={handleChange}
             value={newClub.name}
-          />
+            />
         </FormGroup>
+
         <FormGroup>
           <Label for="image">Image URL</Label>
           <Input
@@ -52,7 +64,7 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             type="url"
             onChange={handleChange}
             value={newClub.image}
-          />
+            />
         </FormGroup>
         <FormGroup>
           <Label for="meeting_dates">
@@ -62,10 +74,10 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             id="meeting_dates"
             name="meeting_dates"
             placeholder="Place your date of meeting here"
-            type="date"
+            type="text"
             onChange={handleChange}
             value={newClub.meeting_dates}
-          />
+            />
         </FormGroup>
         
         <FormGroup>
@@ -79,7 +91,7 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             type="text"
             onChange={handleChange}
             value={newClub.book_of_the_month}
-          />
+            />
         </FormGroup>
 
         <FormGroup>
@@ -93,7 +105,7 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             type="url"
             onChange={handleChange}
             value={newClub.book_of_the_month_picture}
-          />
+            />
         </FormGroup>
 
         <FormGroup>
@@ -107,13 +119,21 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
             type="text"
             onChange={handleChange}
             value={newClub.summary}
-          />
+            />
         </FormGroup>
         
-        <Button onClick={handleSubmit} name="submit">
+        <Button onClick={handleSubmit} id='submit' name="submit">
           Submit
         </Button>
+      
       </Form>
+      <img
+          src={villain}
+          width={'325px'}
+          height={'400'}
+          />
+      </div>
+          </div>
     </>
   )
 }

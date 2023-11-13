@@ -187,3 +187,8 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
+#submit {
+  background-color: #ff0000;
+  color: black;
+}
