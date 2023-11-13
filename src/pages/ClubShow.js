@@ -11,7 +11,7 @@ const ClubShow = ({ bookClubs, currentUser }) => {
       <main>
       <>
       <div className='button'>
-        {currentUser && 
+        {currentUser && (
           <Button 
           style={{
             backgroundColor: '#ff0000',
@@ -22,7 +22,19 @@ const ClubShow = ({ bookClubs, currentUser }) => {
               Join!
             </NavLink>
           </Button>
-        }
+        )}
+        {currentUser && (
+          <Button 
+          style={{
+            backgroundColor: '#ff0000',
+            color: 'black'
+          }}
+          >
+            <NavLink to={`/yourclubs`} className="nav-link">
+              Go back
+            </NavLink>
+          </Button>
+        )}
       </div>
       </>
       <div className='club-show-content'>
