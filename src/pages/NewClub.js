@@ -24,7 +24,7 @@ const NewClub = ({createNewClub , currentUser, memberships, bookClubs}) => {
 
   const handleSubmit = () => {
     createNewClub(newClub, currentUser)
-    navigate("/yourclubs")
+    navigate("/clubs/index")
   }
 
   return (
