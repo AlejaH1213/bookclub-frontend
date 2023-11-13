@@ -15,7 +15,7 @@ const Login = ({ login }) => {
       "user": { email: data.email, password: data.password }
     }
     login(userInfo)
-    navigate('/')
+    navigate('/profile')
     e.target.reset()
   }
   

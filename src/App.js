@@ -187,7 +187,7 @@ console.log("statevaraible user", currentUser);
         <Route path="/clubedit/:id" element={<EditClub bookClubs={bookClubs} updateBookClub={updateBookClub} readBookClubs={readBookClubs} memberships={memberships} currentUser={currentUser}/>} />
         <Route path="/clubs/index" element={<ClubIndex bookClubs={bookClubs} readBookClubs={readBookClubs} currentUser={currentUser} />} />
         <Route path="/clubs/:id/new" element={<NewMembership currentUser={currentUser} createMembership={createMembership} bookClubs={bookClubs}/>}/> 
-        <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} />} />
+        <Route path="/clubs/:id" element={<ClubShow bookClubs={bookClubs} currentUser={currentUser} />} />
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/newclub" element={<NewClub createNewClub={createNewClub}  currentUser={currentUser} memberships={memberships} bookClubs={bookClubs} />} />
         <Route path="/newaccount" element={<NewAccount newaccount={newaccount} />} />

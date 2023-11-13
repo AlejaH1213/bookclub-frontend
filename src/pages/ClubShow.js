@@ -1,14 +1,27 @@
 import React from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, NavLink } from "react-router-dom"
 import { Button, Card} from "reactstrap"
 
-const ClubShow = ({ bookClubs }) => {
+const ClubShow = ({ bookClubs, currentUser }) => {
   const { id } = useParams()
   let currentClub = bookClubs.find((club) => club.id === +id)
   
   return (
     <>
       <main>
+      <>
+        {currentUser && 
+          <Button 
+            style={{
+              backgroundColor: '#062e57'
+            }}
+          >
+            <NavLink to={`/clubs/${currentClub.id}/new`} className="nav-link">
+              Join!
+            </NavLink>
+          </Button>
+        }
+      </>
         {currentClub && (
           <Card >
             <div className='club-show-content'>
