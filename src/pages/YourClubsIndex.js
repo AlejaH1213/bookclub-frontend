@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText } from "reactstrap"
+import { CardBody, Card, Col, CardImg, CardTitle, Button, CardText, CardHeader } from "reactstrap"
 
 const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, deleteMembership }) => {
   const navigate = useNavigate();
@@ -39,6 +39,9 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
               key={index}
               className="card-item"
             >
+            <CardHeader>
+              {`${bookClub.name}`}
+            </CardHeader>
             <CardImg
               alt={`profile picture for ${bookClub?.name}`}
               src={bookClub?.book_of_the_month_picture}
