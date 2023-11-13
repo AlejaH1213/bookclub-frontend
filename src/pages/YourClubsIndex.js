@@ -74,16 +74,16 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
                     Delete
                   </Button>
                 </NavLink>
-                <Button  style={{alignItems: 'center'}}>
-                  <NavLink to="/newclub" className="nav-link">
-                    Create a New Club
-                  </NavLink>
-                </Button>
               </CardBody>
             </div>
             </Card>
           )))}
         </div>
+        <Button  id="submit">
+          <NavLink to="/newclub" className='nav-link'>
+            Create a New Club
+          </NavLink>
+        </Button>
       </main>
     </>
   )
