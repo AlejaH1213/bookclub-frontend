@@ -10,10 +10,11 @@ const UserProfile = ({ currentUser, bookClubs, memberships }) => {
   return (
     <>
       <h2 className='title'>Your profile</h2>
+      <div className='profile-container'>
       {currentUser &&
         <Card>
           <div className='user'>
-            <div id='user-pic'>
+            <div className='user-pic'>
               <img src={currentUser.profile_picture} alt={currentUser.username} style={{height: '500px', width: '300px'}}/>
             </div>
             <div className='user-info'>
@@ -33,6 +34,7 @@ const UserProfile = ({ currentUser, bookClubs, memberships }) => {
           </div>
         </Card>
       }
+      </div>
     </>
   )
 }
