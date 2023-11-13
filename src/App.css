@@ -160,15 +160,17 @@ body {
 
 .club-show-content{ 
   background-color: #aaaeb1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-.club-show-pic {
-  height: 850 px;
-  width: 950px;
-}
+
 .user{ 
   background-color: #aaaeb1;
 }
+
 .edit-container{
   display: flex;
   justify-content: space-around;
@@ -198,4 +200,8 @@ body {
   justify-content: space-around;
   flex-direction: column;
   text-align: center;
+}
+
+.button{
+ text-align: center;
 }

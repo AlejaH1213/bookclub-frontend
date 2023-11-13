@@ -10,41 +10,48 @@ const ClubShow = ({ bookClubs, currentUser }) => {
     <>
       <main>
       <>
+      <div className='button'>
         {currentUser && 
           <Button 
-            style={{
-              backgroundColor: '#062e57'
-            }}
+          style={{
+            backgroundColor: '#ff0000',
+            color: 'black'
+          }}
           >
             <NavLink to={`/clubs/${currentClub.id}/new`} className="nav-link">
               Join!
             </NavLink>
           </Button>
         }
+      </div>
       </>
+      <div className='club-show-content'>
         {currentClub && (
-          <Card >
-            <div className='club-show-content'>
+          <Card style={{
+            backgroundColor: '#aaaeb1'
+          }}>
               <h1 className='club-show-title'>{currentClub.name}</h1>
               <div className='club-show-text'>
                 {currentClub.summary}
                 <br/>
-                {currentClub.meeting_dates}
+                meeting dates: {currentClub.meeting_dates}
+                <br/>
+                book of the month: {currentClub.book_of_the_month}
               </div>
               <div className='club-show-pic'>
                 <img
                 alt={`profile picture for ${currentClub.name}`}
                 src={currentClub.book_of_the_month_picture}
                 style={{
-                  height: '850px',
-                  width: '650'
+                  height: '600px',
+                  width: '750px'
                 }
                 }   
                 />
               </div>
-            </div>
           </Card>               
         )}
+        </div>
         <br />
         <br />
         <br />
