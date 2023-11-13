@@ -40,7 +40,8 @@ const ClubShow = ({ bookClubs, currentUser }) => {
       <div className='club-show-content'>
         {currentClub && (
           <Card style={{
-            backgroundColor: '#aaaeb1'
+              backgroundColor: '#aaaeb1',
+              color: '#5e2121',
           }}>
               <h1 className='club-show-title'>{currentClub.name}</h1>
               <div className='club-show-text'>
