@@ -23,7 +23,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [bookClubs, setBookClubs] = useState([])
   const [memberships, setMemberships] = useState([])
-  const url = "http://localhost:3000"
+  const url = "https://bookclub-backend-neb1.onrender.com"
   
   useEffect (() => {
     const loggedIn = localStorage.getItem("currentUser")
