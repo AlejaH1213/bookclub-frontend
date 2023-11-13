@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useNavigate, useParams } from "react-router-dom"
+import superhero from '../assets/superhero.png'
+import villain  from '../assets/villains.png'
 
 const NewMembership = ({createMembership , currentUser, bookClubs}) => {
   const {id} = useParams()
@@ -26,8 +28,14 @@ const NewMembership = ({createMembership , currentUser, bookClubs}) => {
 
   return (
     <>
-      <h2>Create a nickname</h2>
-      <Form>
+      <h2 className="title">Create a nickname</h2>
+      <div className='form-images'>
+        <img
+          src={superhero}
+          width={'300px'}
+          height={'300px'}
+        /> 
+      <Form className="form-container">
         
         <FormGroup>
           <Label for="name">
@@ -43,10 +51,16 @@ const NewMembership = ({createMembership , currentUser, bookClubs}) => {
           />
         </FormGroup>
         
-        <Button onClick={handleSubmit} name="submit">
+        <Button onClick={handleSubmit} id='submit' name="submit">
           Submit
         </Button>
       </Form>
+      <img
+          src={villain}
+          width={'325px'}
+          height={'400'}
+        />
+      </div>
     </>
   )
 }
