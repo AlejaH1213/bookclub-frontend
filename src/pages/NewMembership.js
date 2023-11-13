@@ -26,7 +26,7 @@ const NewMembership = ({createMembership , currentUser, bookClubs}) => {
 
   return (
     <>
-      <h2>Create a New Membership</h2>
+      <h2>Create a nickname</h2>
       <Form>
         
         <FormGroup>
@@ -36,7 +36,7 @@ const NewMembership = ({createMembership , currentUser, bookClubs}) => {
           <Input
             id="name"
             name="name"
-            placeholder="Place your new club name here"
+            placeholder="type your nickname here"
             type="text"
             onChange={handleChange}
             value={newMembership.name}
