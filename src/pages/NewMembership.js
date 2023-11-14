@@ -8,8 +8,6 @@ const NewMembership = ({createMembership , currentUser, bookClubs}) => {
   const {id} = useParams()
   const navigate = useNavigate()
   const currentBookClub = bookClubs.find((bookclub) => bookclub.id === +id)
-  console.log("current USER:", currentUser);
-  console.log("current BOOKCLUB:", currentBookClub);
   const [newMembership, setNewMembership] = useState({
     club_id: currentBookClub.id,
     user_id: currentUser.id,

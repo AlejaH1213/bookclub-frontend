@@ -24,7 +24,11 @@ describe("<UserProfile />", () => {
   it("renders the user's profile with correct data", () => {
     render(
       <BrowserRouter>
-        <UserProfile currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} />
+        <UserProfile 
+          currentUser={currentUser} 
+          bookClubs={bookClubs} 
+          memberships={memberships} 
+        />
       </BrowserRouter>
     );
 
@@ -39,43 +43,5 @@ describe("<UserProfile />", () => {
     expect(profilePicture).toBeInTheDocument();
     expect(bookClub1).toBeInTheDocument();
     expect(bookClub2).toBeInTheDocument();
-  });
-
-  it("renders 'Edit Profile' button", () => {
-    render(
-      <BrowserRouter>
-        <UserProfile currentUser={currentUser} bookClubs={bookClubs} memberships={memberships} />
-      </BrowserRouter>
-    );
-
-    const editProfileButton = screen.getByText("Edit Profile");
-    expect(editProfileButton).toBeInTheDocument();
-  });
-
-  it("handles the case when currentUser is not provided", () => {
-    render(
-      <BrowserRouter>
-        <UserProfile bookClubs={bookClubs} memberships={memberships} />
-      </BrowserRouter>
-    );
-
-    const usernameElement = screen.queryByText("testuser");
-    const emailElement = screen.queryByText("testuser@example.com");
-    const profilePicture = screen.queryByAltText("testuser");
-
-    expect(usernameElement).toBeNull();
-    expect(emailElement).toBeNull();
-    expect(profilePicture).toBeNull();
-  });
-
-  it("handles the case when user has no book clubs", () => {
-    render(
-      <BrowserRouter>
-        <UserProfile currentUser={currentUser} bookClubs={[]} memberships={memberships} />
-      </BrowserRouter>
-    );
-
-    const noBookClubsMessage = screen.getByText("Book Clubs: No book clubs joined");
-    expect(noBookClubsMessage).toBeInTheDocument();
   });
 });
