@@ -11,7 +11,7 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
 
   const handleDelete = (id) => {
     deleteBookClub(id);
-    // window.location.reload()
+    window.location.reload()
   }
 
   console.log("in YouClubIndex.js current bookclubs", bookClubs);
@@ -35,7 +35,7 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
               className="card-item"
             >
             <CardHeader>
-              {`${bookClub.name}`}
+              {`${bookClub?.name}`}
             </CardHeader>
             <CardImg
               alt={`profile picture for ${bookClub?.name}`}
