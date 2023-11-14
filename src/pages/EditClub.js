@@ -29,13 +29,6 @@ const EditClub = ({bookClubs, updateBookClub, memberships, currentUser}) => {
   const handleSubmit = () => {
     updateBookClub(editBookClub, currentBookClub.id)
   }
-
-  if (!currentBookClub) {
-    return <div>Club not found</div>;
-  }
-  if (!userBookClubs) {
-    return <div>You are not a member of this club, and you cannot edit it.</div>;
-  }
   return (
     <>
       <h2 className='title-new-account'>Edit Club</h2>

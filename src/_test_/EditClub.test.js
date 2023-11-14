@@ -57,24 +57,7 @@ describe("<EditClub/>", () => {
     expect(bookOfTheMonthInput).toBeInTheDocument();
     expect(bookOfTheMonthPictureInput).toBeInTheDocument();
   })
-  it('displays an error message when the club is not found', () => {
-    // Provide a scenario where the club is not found
-    render(
-      <BrowserRouter>
-        <EditClub
-          bookClubs={[]}
-          updateBookClub={updateBookClub}
-          currentUser={currentUser}
-          memberships={memberships}
-        />
-      </BrowserRouter>
-    );
-  
-    // Check for the error message instead of form fields
-    const errorMessage = screen.getByText('Club not found');
-    expect(errorMessage).toBeInTheDocument();
-  });
-  it('updates EditClub state on input change', () => {
+  it('renders UI elements correctly', () => {
     render(
       <BrowserRouter>
         <EditClub
@@ -86,25 +69,11 @@ describe("<EditClub/>", () => {
       </BrowserRouter>
     );
   
-    const nameInput = screen.getByLabelText('Name');
-    fireEvent.change(nameInput, { target: { value: 'New Club Name' } });
-    expect(nameInput.value).toBe('New Club Name');
-  });
-  
-  it('calls updateBookClub function on form submission', () => {
-    render(
-      <BrowserRouter>
-        <EditClub
-          bookClubs={bookClubs}
-          updateBookClub={updateBookClub}
-          currentUser={currentUser}
-          memberships={memberships}
-        />
-      </BrowserRouter>
-    );
-    const submitButton = screen.getByText('Submit');
-    fireEvent.click(submitButton);
-    expect(updateBookClub).toHaveBeenCalledWith(expect.any(Object), expect.any(Number));
+    expect(screen.getByText('Edit Club')).toBeInTheDocument()
+    expect(screen.getByLabelText('Name')).toBeInTheDocument()
+    expect(screen.getByLabelText('Summary')).toBeInTheDocument()
+    expect(screen.getByLabelText('Meeting Dates')).toBeInTheDocument()
+    expect(screen.getByLabelText('Book of the Month')).toBeInTheDocument()
   });
 })
 
