@@ -11,7 +11,7 @@ const YourClubsIndex = ({currentUser, bookClubs, memberships, deleteBookClub, de
 
   const handleDelete = (id) => {
     deleteBookClub(id);
-    window.location.reload()
+    // window.location.reload()
   }
 
   console.log("in YouClubIndex.js current bookclubs", bookClubs);
